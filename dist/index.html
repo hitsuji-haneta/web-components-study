@@ -4,10 +4,11 @@
   </head>
   <body>
     <h1>Hello, World</h1>
-    <my-button></my-button>
+    <my-button label="hello" message="world"></my-button>
   </body>
   <script>
-      const element = document.querySelector('my-button');
-      element.label = 'Click Me';
+    document
+      .querySelector('my-button')
+      .onClick = value => console.log(value);
   </script>
 </html>

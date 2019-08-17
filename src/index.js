@@ -21,7 +21,7 @@ template.innerHTML = `
       box-sizing: border-box;
       border: 1px solid #a1a1a1;
       height: 70px;
-      background: #00bfbf;
+      background: #007777;
       box-shadow: 0 2px 4px 0 rgba(0,0,0, 0.05), 0 2px 8px 0 rgba(161,161,161, 0.4);
       color: #ffffff;
     }
@@ -35,20 +35,33 @@ template.innerHTML = `
 class Button extends HTMLElement {
   constructor() {
     super();
-    this._shadowRoot = this.attachShadow({ mode: 'open'});
+    this._shadowRoot = this.attachShadow({ mode: 'open' });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this.$button = this._shadowRoot.querySelector('button');
+    this.$button.addEventListener('click', () => this.onClick(this.message));
   }
 
   get label() {
     return this.getAttribute('label');
   }
 
+  set label(value) {
+    this.setAttribute('label', value);
+  }
+
+  get message() {
+    return this.getAttribute('message');
+  }
+
+  set message(value) {
+    this.setAttribute('message', value);
+  }
+
   static get observedAttributes() {
     return ['label'];
   }
 
-  attributeChabgedCallback(name, _oldVal, newVal) {
+  attributeChangedCallback(_name, _oldVal, _newVal) {
     this.render();
   }
 
