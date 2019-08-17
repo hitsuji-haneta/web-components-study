@@ -5,10 +5,19 @@
   <body>
     <h1>Hello, World</h1>
     <my-button label="hello" message="world"></my-button>
+    <my-dropdown
+      label="Dropdown"
+      option="option2"
+    ></my-dropdown>
   </body>
   <script>
     document
       .querySelector('my-button')
       .onClick = value => console.log(value);
+
+    document.querySelector('my-dropdown').options = {
+      option1: { label: 'Option 1' },
+      option2: { label: 'Option 2' },
+    };
   </script>
 </html>
